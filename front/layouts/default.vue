@@ -2,24 +2,23 @@
   <v-app>
     <!-- 툴바 -->
     <nav>
-      <v-toolbar class="toolbar" dense flat>
+      <v-app-bar class="toolbar" dense flat>
         <v-toolbar-title>
           <nuxt-link to="/">Traverse</nuxt-link>
         </v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-toolbar-items>
-          <!-- <v-text-field label="검색" /> -->
-          <v-btn v-if="!me" depressed color="transparent" text nuxt to="/signup">
-            <h4>Signup</h4>
-          </v-btn>
-          <v-btn v-if="!me" depressed color="transparent" text nuxt to="/login">
-            <h4>Login</h4>
-          </v-btn>
-          <v-btn v-if="me" depressed color="transparent" text @click.prevent="logout">
-            <h4>Logout</h4>
-          </v-btn>
-        </v-toolbar-items>
-      </v-toolbar>
+        
+        <!-- <v-text-field label="검색" /> -->
+        <v-btn v-if="!me" color="transparent" text nuxt to="/signup">
+          <h4>Signup</h4>
+        </v-btn>
+        <v-btn v-if="!me" color="transparent" text nuxt to="/login">
+          <h4>Login</h4>
+        </v-btn>
+        <v-btn v-if="me" color="transparent" text @click.prevent="logout">
+          <h4>Logout</h4>
+        </v-btn>
+      </v-app-bar>
     </nav>
 
     <!-- 내용 -->
