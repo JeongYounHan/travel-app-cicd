@@ -99,4 +99,4 @@ my_settings.py
 0001_initial.py
 
 ### venv ###
-myvenv
+.venv/
