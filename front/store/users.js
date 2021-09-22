@@ -24,10 +24,10 @@ export const mutations = {
     },
 };
 
-const BACK_URL = 'http://localhost:8000/rest-auth'
+const BACK_URL = '/rest-auth'
 
 export const actions = {
-    nuxtServerInit ({ commit }, { app }) {
+    nuxtServerInit({ commit }, { app }) {
         const token = app.$cookies.get('token')
         console.log(token)
         commit('LOGIN', token)
@@ -45,7 +45,7 @@ export const actions = {
             }).catch((err) => {
                 console.log(err)
             })
-    },    
+    },
     SIGNUP({ dispatch }, payload) {
         this.$axios.post(`${BACK_URL}/signup/`, {
             username: payload.username,
@@ -58,10 +58,10 @@ export const actions = {
             }).catch((err) => {
                 console.log(err)
             }).finally(() => {
-                dispatch('LOGIN', {username: payload.username, password: payload.password1})
+                dispatch('LOGIN', { username: payload.username, password: payload.password1 })
             })
-    }, 
-    LOGOUT({commit}) {
+    },
+    LOGOUT({ commit }) {
         this.$axios.post(`${BACK_URL}/logout/`)
             .then(() => {
                 commit('LOGOUT', null)
@@ -69,7 +69,7 @@ export const actions = {
             }).catch((err) => {
                 console.error(err);
             });
-    } 
+    }
 };
 
 

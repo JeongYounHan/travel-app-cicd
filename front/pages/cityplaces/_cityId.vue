@@ -38,7 +38,9 @@ export default {
     },
     async asyncData({ $axios, params }) {
         try {
-            let temp = await $axios.$get(`http://localhost:8000/api/places?city=${params.cityId}`)
+            // let temp = await $axios.$get(`http://localhost:8000/api/places?city=${params.cityId}`)
+            let temp = await $axios.$get(`/api/places?city=${params.cityId}`)
+
             let placeList = temp.results
             return { placeList }
         } catch (err) {

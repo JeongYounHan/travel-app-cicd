@@ -64,7 +64,9 @@ export default {
     },
     async asyncData({ $axios }) {
         try {
-            let temp = await $axios.$get(`http://localhost:8000/api/cities`)
+            // let temp = await $axios.$get(`http://localhost:8000/api/cities`)
+            let temp = await $axios.$get(`/api/cities`)
+
             let cityList = temp.results
             return { cityList }
         } catch (err) {

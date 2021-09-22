@@ -1,0 +1,29 @@
+version: "3"
+services: 
+  frontend:
+    build: 
+      context: ./front
+      dockerfile: Dockerfile.dev
+    # volumes:
+    #   - /app/node_modules
+    #   - ./front:/app
+    # stdin_open: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+  nginx:
+    restart: always
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+  backend:
+    build: 
+      context: ./back
+      dockerfile: Dockerfile
+    container_name: app_backend
+    volumes:
+      - ./back:/app
+
+
+
