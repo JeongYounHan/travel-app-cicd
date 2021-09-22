@@ -7,7 +7,7 @@
     >
       <template v-slot:activator="{ on, attrs }">
         <v-btn
-          flat
+          text
           class="addSchedule__btn"
           v-bind="attrs"
           v-on="on"
