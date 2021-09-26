@@ -92,11 +92,11 @@ sw.*
 *.pot
 *.pyc
 __pycache__/
-db.sqlite3
+<!-- db.sqlite3 -->
 db.sqlite3-journal
 media
 my_settings.py
-0001_initial.py
+<!-- 0001_initial.py -->
 
 ### venv ###
 .venv/
