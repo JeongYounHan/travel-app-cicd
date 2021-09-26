@@ -7,21 +7,21 @@ services:
 
 before_install: # test 스크립트를 실행할 환경
   - echo "start"
-  - docker build -t hjy/docker_front -f ./front/Dockerfile.dev ./front # 개발환경
+  - docker build -t 51sarang/docker_front -f ./front/Dockerfile.dev ./front # 개발환경
 
 # script: # test 실행할 스크립트
-#   - docker run -e CI=true hjy/docker_front npm run test -- --coverage
+#   - docker run -e CI=true 51sarang/docker_front npm run test -- --coverage
 
 after_success: 
-  - docker build -t hjy/docker_front ./front # 운영환경
-  - docker build -t hjy/docker_back ./back # 운영환경
-  - docker build -t hjy/docker_nginx ./nginx # 운영환경
+  - docker build -t 51sarang/docker_front ./front # 운영환경
+  - docker build -t 51sarang/docker_back ./back # 운영환경
+  - docker build -t 51sarang/docker_nginx ./nginx # 운영환경
 
   - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_ID" --password-stdin
 
-  - docker push hjy/docker_front
-  - docker push hjy/docker_back
-  - docker push hjy/docker_nginx
+  - docker push 51sarang/docker_front
+  - docker push 51sarang/docker_back
+  - docker push 51sarang/docker_nginx
 
 
 # deploy:

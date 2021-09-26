@@ -1,7 +1,7 @@
 version: "2.4"
 services: 
   frontend:
-    image: hjy/docker_front
+    image: 51sarang/docker_front
     build: 
       context: ./front
       dockerfile: Dockerfile.dev
@@ -14,7 +14,7 @@ services:
     mem_limit: 128m
   nginx:
     restart: always # nginx는 소중하니깐
-    image: hjy/docker_nginx
+    image: 51sarang/docker_nginx
     build:
       context: ./nginx
       dockerfile: Dockerfile
@@ -25,7 +25,7 @@ services:
       - frontend
       - backend
   backend:
-    image: hjy/docker_back
+    image: 51sarang/docker_back
     build: 
       context: ./back
       dockerfile: Dockerfile
