@@ -11,7 +11,7 @@ services:
     # stdin_open: true
     # environment:
     #   - CHOKIDAR_USEPOLLING=true
-    # mem_limit: 128m
+    mem_limit: 128m
   nginx:
     restart: always # nginx는 소중하니깐
     image: 51sarang/docker_nginx
@@ -19,20 +19,22 @@ services:
     #   context: ./nginx
     #   dockerfile: Dockerfile
     ports:
-      - "80:80"
-    # mem_limit: 128m
+      - "3000:80"
+    mem_limit: 128m
     links:
       - frontend
+      - backend
+    depends_on : 
       - backend
   backend:
     image: 51sarang/docker_back
     # build: 
     #   context: ./back
     #   dockerfile: Dockerfile
-    container_name: app_backend
+    # container_name: app_backend
     # volumes:
     #   - ./back:/app
-    # mem_limit: 128m
+    mem_limit: 128m
 
 
 
