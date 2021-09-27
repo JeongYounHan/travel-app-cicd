@@ -19,5 +19,5 @@ EXPOSE 3000
 
 # 내가 작성한 것으로 nginx 설정 대체
 COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf 
-COPY --from=builder /app/build /usr/share/nginx/html
+COPY --from=builder /app/.nuxt /usr/share/nginx/html
 
