@@ -11,6 +11,7 @@
     "lint": "eslint **/*"
   },
   "dependencies": {
+    "sass": "~1.32.12",
     "@fortawesome/fontawesome-free": "^5.15.1",
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/vuetify": "^1.11.3",
