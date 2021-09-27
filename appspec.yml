@@ -9,7 +9,7 @@ permissions:
     mode: 777
 hooks:
   AfterInstall:
-    - location: setup.sh
+    - location: run.sh
       timeout: 3000
       runas: root
   ApplicationStart:
