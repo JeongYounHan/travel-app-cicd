@@ -18,6 +18,13 @@ jobs:
 
     - name: Login to dockerhub
       run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+    
+    - name: Build Docker Dev Front
+      run: docker build -t ${{ secrets.DOCKER_USERNAME }}/docker_front -f ./front/Dockerfile.dev ./front
+    
+#     - name: Run Test
+#       run: docker run -e CI=true ${{ secrets.DOCKER_USERNAME }}/docker_front npm run test -- --coverage
+    
     - name: Build Docker Front image
       run: docker build -t ${{ secrets.DOCKER_USERNAME }}/docker_front ./front
     - name: Build Docker Back image
