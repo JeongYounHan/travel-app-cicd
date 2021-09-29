@@ -22,5 +22,7 @@ COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 # 위의 builder 에서 빌드된 파일 복사
 COPY --from=builder /app/.nuxt /usr/share/nginx/html
 
+WORKDIR /usr/share/nginx/html
+
 CMD [ "npm", "run", "start" ]
 
