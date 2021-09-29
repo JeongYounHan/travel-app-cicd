@@ -1,5 +1,7 @@
 # travel app upgrade
 
+[![Actions Status](https://github.com/JeongYounHan/travel-app-cicd/workflows/docker/badge.svg)](https://github.com/JeongYounHan/travel-app-cicd/actions)
+
 ## 목차
 
 1. [개요](#개요)
