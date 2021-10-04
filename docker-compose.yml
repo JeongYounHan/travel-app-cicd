@@ -2,8 +2,8 @@ version: "3"
 services: 
   frontend:
     image: 51sarang/docker_front
-    ports:
-      - "3000:3000"
+    # ports:
+    #   - "3000:3000"
     # build: 
     #   context: ./front
     #   dockerfile: Dockerfile.dev
@@ -31,8 +31,8 @@ services:
       - backend
   backend:
     image: 51sarang/docker_back
-    ports:
-      - "8000:8000"
+    # ports:
+    #   - "8000:8000"
     # build: 
     #   context: ./back
     #   dockerfile: Dockerfile
