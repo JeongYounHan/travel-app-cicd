@@ -25,6 +25,7 @@ services:
       - frontend
       - backend
     depends_on : 
+      - frontend
       - backend
   backend:
     image: 51sarang/docker_back
