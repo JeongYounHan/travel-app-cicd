@@ -31,6 +31,8 @@ services:
       - backend
   backend:
     image: 51sarang/docker_back
+    ports:
+      - "8000:8000"
     # build: 
     #   context: ./back
     #   dockerfile: Dockerfile
