@@ -1,6 +1,4 @@
-FROM nginx
-RUN apt-get update
-RUN apt-get install npm -y
+FROM node:alpine
 
 # COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 WORKDIR /app
