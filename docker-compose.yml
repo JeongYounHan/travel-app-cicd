@@ -2,6 +2,8 @@ version: "3"
 services: 
   frontend:
     image: 51sarang/docker_front
+    ports:
+      - "3000:3000"
     # build: 
     #   context: ./front
     #   dockerfile: Dockerfile.dev
