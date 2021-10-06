@@ -24,7 +24,7 @@ export const mutations = {
     },
 };
 
-const BACK_URL = '/rest-auth'
+const BACK_URL = 'http:/3.34.199.215/rest-auth'
 
 export const actions = {
     LOGIN({ commit }, payload) {

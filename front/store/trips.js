@@ -40,7 +40,7 @@ export const mutations = {
     },
 };
 
-const BACK_URL = '/api'
+const BACK_URL = 'http:/3.34.199.215/api'
 
 export const actions = {
     FETCH_CITYLIST({ commit }, payload) {
