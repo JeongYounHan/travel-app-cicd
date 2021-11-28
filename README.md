@@ -4,9 +4,9 @@
 
 1. [개요](#개요)
 
-2. [업그레이드작업](#업그레이드작업)
+2. [작업과정](#작업과정)
    - [프론트엔드](#프론트엔드)
-   - [docker CI/CD](#docker-CI/CD)
+   - [docker&CI/CD](#docker&CI/CD)
 
 3. [배운것](#배운것)
 
@@ -36,7 +36,13 @@
 
 
 
-## 업그레이드작업
+#### 결과
+
+http://3.34.199.215
+
+
+
+## 작업과정
 
 ### 프론트엔드
 
@@ -46,17 +52,66 @@
 
 
 
-### docker CI/CD
+### docker&CI/CD
 
 Ci.cd 구조도
 
 
 
-1. dockerfile / dockerfile.dev
+1. dockerfile(production)
    - Frontend - nuxt.js
+   
+     ```dockerfile
+     FROM node:alpine
+     
+     WORKDIR /app
+     
+     COPY ./package.json ./
+     
+     RUN npm install
+     
+     COPY ./ ./
+     
+     RUN npm run build
+     
+     ENV HOST 0.0.0.0
+     EXPOSE 3000
+     
+     CMD [ "npm", "run", "start" ]
+     ```
+   
+     
+   
    - Backend - Django(DB - sqlite)
-
-
+   
+     ```dockerfile
+     FROM python:3.6
+     
+     WORKDIR /app
+     
+     COPY ./requirements.txt ./
+     
+     RUN pip install -r requirements.txt
+     
+     COPY . .
+     
+     CMD ["python", "manage.py", "migrate"]
+     
+     EXPOSE 8000
+     
+     CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+     ```
+   
+     
+   
+   - Nginx
+   
+     ```dockerfile
+     FROM nginx
+     COPY ./default.conf /etc/nginx/conf.d/default.conf
+     ```
+   
+     
 
 2. Docker-compose
 
@@ -89,8 +144,6 @@ Ci.cd 구조도
    on:
      push:
        branches: [ main ]
-   #   pull_request:
-   #     branches: [ main ]
    
    jobs:
      continuous-integration:
@@ -142,12 +195,39 @@ Ci.cd 구조도
                --deployment-config-name CodeDeployDefault.OneAtATime \
                --github-location repository=${{ github.repository }},commitId=${{ github.sha }}
    ```
-
+   
    
 
 4. Nginx
 
+   - default.conf
 
+   ```
+   upstream frontend {
+     server frontend:3000;
+   }
+   upstream backend {
+     server backend:8000;
+   }
+   
+   server {
+     listen 80;
+   
+     location / {
+       proxy_pass http://frontend;
+     }
+   
+     location /api {
+       proxy_pass http://backend;
+     }
+   
+     location /rest-auth {
+       proxy_pass http://backend;
+     }
+   }
+   ```
+
+   
 
 
 
