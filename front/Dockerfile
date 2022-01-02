@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:16-alpine3.12
 
 # COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 WORKDIR /app
