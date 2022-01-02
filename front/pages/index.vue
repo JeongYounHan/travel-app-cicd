@@ -7,7 +7,7 @@
       >
         <div class="search">
           <h1>Enjoy Your Dream Vacation</h1>
-          <h4>일상 속 작은 행복, 여행을 떠나보아요~</h4>
+          <h4>일상 속 작은 행복, 국내 여행을 떠나보아요~</h4>
           <div class="search__container">
             <input
               class="search__form"
