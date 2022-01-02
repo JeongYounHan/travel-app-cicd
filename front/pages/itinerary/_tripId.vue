@@ -1,13 +1,13 @@
 <template>
-  <div v-if="trip">
+  <div>
     <Drawer></Drawer>
     <Map></Map>
   </div>
-  <div v-else>해당 여행일정은 존재하지 않습니다.</div>
+  <!-- <div v-else>해당 여행일정은 존재하지 않습니다.</div> -->
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+// import { mapActions } from 'vuex'
 import Drawer from '../../components/Drawer.vue'
 import Map from '../../components/Map.vue'
 
@@ -21,27 +21,23 @@ export default {
       tripId: ''
     }
   },
-  created() {
-
+  async created() {
+    // this.tripId = this.$route.params.tripId
+    // await this.FETCH_TRIP(this.tripId)
   },
-  mounted() {
-    this.tripId = this.$route.params.tripId
-    this.SELECT_TRIP(this.trip)
-  },
-  computed: {
-    trip() {
-      return this.$store.state.trips.trips.find(v => v.id == this.tripId)
-    }
-  },
+  mounted() {},
+  // computed: {
+  //   trip() {
+  //     return this.$store.state.trips.trips.find(v => v.id == this.tripId)
+  //   }
+  // },
   methods: {
-    ...mapMutations({
-      SELECT_TRIP: 'trips/SELECT_TRIP'
-    })
+    // ...mapActions({
+    //   FETCH_TRIP: 'trips/FETCH_TRIP'
+    // })
   },
-  middleware: 'authenticated',
+  middleware: 'authenticated'
 }
 </script>
 
-<style>
-
-</style>
+<style></style>
