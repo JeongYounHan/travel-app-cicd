@@ -12,26 +12,32 @@
           :data-schedule-day="schedule.day"
         >
           <v-timeline-item color="blue darken-2" small v-if="schedule">
-            <div class="schedule__delete">
-              <strong>{{ schedule.place.name }}</strong>
-              <a
-                href=""
-                class="schedule__delete__btn"
-                @click.prevent.stop="
-                  onDelete({
-                    id: schedule.id,
-                    trip: schedule.trip.id,
-                    day: schedule.day
-                  })
-                "
-                >&times;</a
-              >
+            <div class="d-flex justify-space-between">
+              <div class="d-flex flex-column">
+                <strong>{{ schedule.place.name }}</strong>
+                <small>교통편</small>
+                <!-- <small>{{ schedule.place.time }}</small> -->
+                <p class="caption">
+                  {{ schedule.memo }}
+                </p>
+              </div>
+
+              <div class="d-flex flex-column">
+                <a
+                  href=""
+                  class="schedule__delete__btn"
+                  @click.prevent.stop="
+                    onDelete({
+                      id: schedule.id,
+                      trip: schedule.trip.id,
+                      day: schedule.day
+                    })
+                  "
+                  >&times;</a
+                >
+                <v-icon class="handle">mdi-menu</v-icon>
+              </div>
             </div>
-            <small>{{ schedule.place.time }}</small>
-            <p class="caption">
-              {{ schedule.memo }}
-            </p>
-            <i class="handle fas fa-bars"></i>
           </v-timeline-item>
         </div>
         <div
@@ -44,26 +50,31 @@
           :data-schedule-day="schedule.day"
         >
           <v-timeline-item color="pink" small v-if="schedule">
-            <div class="schedule__delete">
-              <strong>{{ schedule.place.name }}</strong>
-              <a
-                href=""
-                class="schedule__delete__btn"
-                @click.prevent.stop="
-                  onDelete({
-                    id: schedule.id,
-                    trip: schedule.trip.id,
-                    day: schedule.day
-                  })
-                "
-                >&times;</a
-              >
+            <div class="d-flex justify-space-between">
+              <div class="d-flex flex-column">
+                <strong>{{ schedule.place.name }}</strong>
+                <small>숙소</small>
+                <p class="caption">
+                  {{ schedule.memo }}
+                </p>
+              </div>
+
+              <div class="d-flex flex-column">
+                <a
+                  href=""
+                  class="schedule__delete__btn"
+                  @click.prevent.stop="
+                    onDelete({
+                      id: schedule.id,
+                      trip: schedule.trip.id,
+                      day: schedule.day
+                    })
+                  "
+                  >&times;</a
+                >
+                <v-icon class="handle">mdi-menu</v-icon>
+              </div>
             </div>
-            <small>숙소</small>
-            <p class="caption">
-              {{ schedule.memo }}
-            </p>
-            <i class="handle fas fa-bars"></i>
           </v-timeline-item>
         </div>
         <div
@@ -76,29 +87,35 @@
           :data-schedule-day="schedule.day"
         >
           <v-timeline-item color="teal" small v-if="schedule">
-            <div class="schedule__delete">
-              <strong>{{ schedule.place.name }}</strong>
-              <a
-                href=""
-                class="schedule__delete__btn"
-                @click.prevent.stop="
-                  onDelete({
-                    id: schedule.id,
-                    trip: schedule.trip.id,
-                    day: schedule.day
-                  })
-                "
-                >&times;</a
-              >
+            <div class="d-flex justify-space-between">
+              <div class="d-flex flex-column">
+                <strong>{{ schedule.place.name }}</strong>
+
+                <small>관광명소</small>
+                <p class="caption">
+                  {{ schedule.place.time.slice(0, 23) + '...' }}
+                </p>
+                <p class="caption">
+                  {{ schedule.memo }}
+                </p>
+              </div>
+
+              <div class="d-flex flex-column">
+                <a
+                  href=""
+                  class="schedule__delete__btn"
+                  @click.prevent.stop="
+                    onDelete({
+                      id: schedule.id,
+                      trip: schedule.trip.id,
+                      day: schedule.day
+                    })
+                  "
+                  >&times;</a
+                >
+                <v-icon class="handle">mdi-menu</v-icon>
+              </div>
             </div>
-            <small>관광명소</small>
-            <p class="caption">
-              {{ schedule.place.time.slice(0, 23) + '...' }}
-            </p>
-            <p class="caption">
-              {{ schedule.memo }}
-            </p>
-            <i class="handle fas fa-bars"></i>
           </v-timeline-item>
         </div>
       </template>
@@ -119,10 +136,10 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="white" text @click="dialog = false">
+          <v-btn color="teal" outlined @click="dialog = false">
             Close
           </v-btn>
-          <v-btn color="white" text @click="dialog = false">
+          <v-btn color="teal" outlined @click="dialog = false">
             Save
           </v-btn>
         </v-card-actions>
@@ -182,14 +199,12 @@ export default {
 
 .schedule__delete__btn {
   font-size: 20px;
+  text-align: center;
   color: grey;
 }
 
 .handle {
   color: grey;
-  position: absolute;
-  top: 60%;
-  left: 182px;
   font-size: 15px;
 }
 
