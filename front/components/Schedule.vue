@@ -7,14 +7,25 @@
           v-if="schedule.place.div === 'transportation'"
           v-bind="attrs"
           v-on="on"
-          :data-schedule-id="schedule.id" 
+          :data-schedule-id="schedule.id"
           :data-schedule-order="schedule.order"
           :data-schedule-day="schedule.day"
         >
           <v-timeline-item color="blue darken-2" small v-if="schedule">
             <div class="schedule__delete">
               <strong>{{ schedule.place.name }}</strong>
-              <a href="" class="schedule__delete__btn" @click.prevent.stop="onDelete({id: schedule.id, trip: schedule.trip.id, day: schedule.day})">&times;</a>
+              <a
+                href=""
+                class="schedule__delete__btn"
+                @click.prevent.stop="
+                  onDelete({
+                    id: schedule.id,
+                    trip: schedule.trip.id,
+                    day: schedule.day
+                  })
+                "
+                >&times;</a
+              >
             </div>
             <small>{{ schedule.place.time }}</small>
             <p class="caption">
@@ -28,14 +39,25 @@
           v-else-if="schedule.place.div === 'accommodation'"
           v-bind="attrs"
           v-on="on"
-          :data-schedule-id="schedule.id" 
+          :data-schedule-id="schedule.id"
           :data-schedule-order="schedule.order"
           :data-schedule-day="schedule.day"
         >
           <v-timeline-item color="pink" small v-if="schedule">
             <div class="schedule__delete">
               <strong>{{ schedule.place.name }}</strong>
-              <a href="" class="schedule__delete__btn" @click.prevent.stop="onDelete({id: schedule.id, trip: schedule.trip.id, day: schedule.day})">&times;</a>
+              <a
+                href=""
+                class="schedule__delete__btn"
+                @click.prevent.stop="
+                  onDelete({
+                    id: schedule.id,
+                    trip: schedule.trip.id,
+                    day: schedule.day
+                  })
+                "
+                >&times;</a
+              >
             </div>
             <small>숙소</small>
             <p class="caption">
@@ -44,19 +66,34 @@
             <i class="handle fas fa-bars"></i>
           </v-timeline-item>
         </div>
-        <div class="schedule__div" v-else v-bind="attrs" v-on="on"
-          :data-schedule-id="schedule.id" 
+        <div
+          class="schedule__div"
+          v-else
+          v-bind="attrs"
+          v-on="on"
+          :data-schedule-id="schedule.id"
           :data-schedule-order="schedule.order"
           :data-schedule-day="schedule.day"
         >
           <v-timeline-item color="teal" small v-if="schedule">
             <div class="schedule__delete">
-              <strong>{{ schedule.place.name}}</strong>
-              <a href="" class="schedule__delete__btn" @click.prevent.stop="onDelete({id: schedule.id, trip: schedule.trip.id, day: schedule.day})">&times;</a>
+              <strong>{{ schedule.place.name }}</strong>
+              <a
+                href=""
+                class="schedule__delete__btn"
+                @click.prevent.stop="
+                  onDelete({
+                    id: schedule.id,
+                    trip: schedule.trip.id,
+                    day: schedule.day
+                  })
+                "
+                >&times;</a
+              >
             </div>
             <small>관광명소</small>
             <p class="caption">
-              {{ schedule.place.time.slice(0, 23)+'...' }}
+              {{ schedule.place.time.slice(0, 23) + '...' }}
             </p>
             <p class="caption">
               {{ schedule.memo }}
@@ -73,15 +110,9 @@
         <v-card-text>
           <v-container>
             <div v-if="schedule.place">
-              <p class="caption mt-2">
-                설명: {{ schedule.place.description }}
-              </p>
-              <p class="caption mt-2">
-                가격: {{ schedule.place.price }}
-              </p>
-              <p class="caption mt-2">
-                시간: {{ schedule.place.time }}
-              </p>
+              <p class="caption mt-2">설명: {{ schedule.place.description }}</p>
+              <p class="caption mt-2">가격: {{ schedule.place.price }}</p>
+              <p class="caption mt-2">시간: {{ schedule.place.time }}</p>
             </div>
             <v-text-field class="mt-3" label="메모" required></v-text-field>
           </v-container>
@@ -101,7 +132,7 @@
 </template>
 
 <script>
-import {mapActions} from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
   props: ['schedule'],
@@ -115,8 +146,14 @@ export default {
       DELETE_SCHEDULE: 'trips/DELETE_SCHEDULE'
     }),
     onDelete(payload) {
-      if (window.confirm(`${this.schedule.place.name} 일정을 삭제하시겠습니까?`)) {
-        this.DELETE_SCHEDULE({trip: payload.trip, day: payload.day, id: payload.id})
+      if (
+        window.confirm(`${this.schedule.place.name} 일정을 삭제하시겠습니까?`)
+      ) {
+        this.DELETE_SCHEDULE({
+          trip: payload.trip,
+          day: payload.day,
+          id: payload.id
+        })
       }
     }
   }
@@ -135,7 +172,6 @@ export default {
 .caption {
   margin: 0px;
   padding: 0px;
-
 }
 
 .schedule__delete {
@@ -159,13 +195,14 @@ export default {
 
 /* 드래그 시, 정렬된 상태로 드래그 하려고 */
 
-.v-timeline--dense .v-timeline-item:nth-child(odd):not(.v-timeline-item--right), .v-timeline--dense .v-timeline-item--left {
+.v-timeline--dense .v-timeline-item:nth-child(odd):not(.v-timeline-item--right),
+.v-timeline--dense .v-timeline-item--left {
   flex-direction: row;
 }
 
-.v-timeline-item__dot{
+.v-timeline-item__dot {
   position: static;
-  margin: 0 25px 0 7px;
+  margin: 0 8px 0 7px;
 }
 
 .v-timeline-item__body {
@@ -179,6 +216,4 @@ export default {
   z-index: 9999 !important;
   opacity: 0.8 !important;
 }
-
-
 </style>

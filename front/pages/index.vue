@@ -21,9 +21,15 @@
       </v-img>
     </div>
     <h1 class="recentTrip">Recent Trip</h1>
-    <v-container class="card__container" v-if="trips">
-      <div v-for="trip in trips" :key="trip.id">
-        <v-card class="card__item ma-2" nuxt :to="'/itinerary/' + trip.id">
+
+    <v-row v-if="trips">
+      <v-col cols="12" sm="6" md="3" v-for="trip in trips" :key="trip.id">
+        <v-card
+          width="100%"
+          class="card__item ma-2"
+          nuxt
+          :to="'/itinerary/' + trip.id"
+        >
           <v-img
             :src="trip.city.image"
             class="card__image white--text align-end"
@@ -39,8 +45,9 @@
             >
           </v-img>
         </v-card>
-      </div>
-    </v-container>
+      </v-col>
+    </v-row>
+
     <DialogForm></DialogForm>
   </div>
 </template>
@@ -116,11 +123,6 @@ export default {
   margin-top: 40px;
 }
 
-.card__container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-}
-
 .search__container {
   text-align: center;
   margin-top: 180px;
@@ -154,11 +156,6 @@ input:focus {
 }
 
 @media screen and (max-width: 768px) {
-  .card__container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-
   .card__image {
     height: 150px !important;
   }

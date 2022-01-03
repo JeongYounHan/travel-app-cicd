@@ -3,7 +3,7 @@
     <v-navigation-drawer permanent>
       <h1>{{ tripSelected.date_from }} - {{ tripSelected.date_to }}</h1>
       <h3 class="my-0">{{ cityName }} 여행</h3>
-      <small>{{ cityCountry }} | {{}}</small>
+      <small>{{ cityCountry }} | {{ cityContinent }}</small>
       <div class="chips mt-3">
         <v-chip>+ 항공편</v-chip>
         <v-chip>+ 숙소</v-chip>

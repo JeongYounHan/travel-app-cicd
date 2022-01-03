@@ -22,14 +22,14 @@ export default {
     return {
       mapOptions: {},
       map: '',
-      day: 1
+      day: 1,
+      tripSelected: ''
     }
   },
   computed: {
     ...mapState({
       scheduleList: state => state.trips.scheduleList,
       daysTotal: state => state.trips.daysTotal,
-      tripSelected: state => state.trips.tripSelected.id,
       daySchedule: state => state.trips.daySchedule
       // changeInOrder: state => state.trips.changeInOrder
     })
@@ -73,7 +73,7 @@ export default {
       //데이터 받아오기
       this.tripId = this.$route.params.tripId
       this.tripSelected = await this.FETCH_TRIP(this.tripId)
-      this.FETCH_DAYSCHEDULE({ trip: this.tripSelected, day: item })
+      this.FETCH_DAYSCHEDULE({ trip: this.tripSelected.id, day: item })
     },
     fetchMap() {
       //지도를 삽입할 HTML 요소 또는 HTML 요소의 id를 지정 후
